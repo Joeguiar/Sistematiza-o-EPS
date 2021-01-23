@@ -125,7 +125,7 @@
             </div>
 
             <div class="input-group actions">
-              <a href="#" class="button cancel">Cancelar</a>
+              <a onclick="Modal.close()" href="#" class="button cancel">Cancelar</a>
               <button>Salvar</button>
             </div>
           </form>
@@ -138,13 +138,18 @@
     </footer>
 
     <script>
-      Modal = {
+      const Modal = {
         open(){
-          alert("salve")
+          document
+          .querySelector('.modal-overlay')
+          .classList
+          .add('active')
         },
-// 2:13
         close(){
-
+          document
+          .querySelector('.modal-overlay')
+          .classList
+          .remove('active')
         }
       }
     </script>
