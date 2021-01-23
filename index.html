@@ -45,12 +45,12 @@
       <section id="transaction">
         <h2 class="sr-only">Transações</h2>
 
-        <a href="#" class="button new">+ Nova Transação</a>
+        <a onclick="Modal.open()" href="#" class="button new">+ Nova Transação</a>
 
         <table id="data-table">
+          <date>
           <thead>
-            <tr>
-              <th>Descrição</th>
+              <th>Data</th>
               <th>Valor</th>
               <th>Data</th>
               <th></th>
@@ -83,7 +83,7 @@
       </section>
     </main>
 
-    <div class="modal-overlay active">
+    <div class="modal-overlay">
       <div class="modal">
         <div id="form">
           <h2>Nova Transação</h2>
@@ -110,10 +110,23 @@
               />
               <small class="help"
                 >Use o sinal - (negativo) para as despesas e , (vírgula) para
-                casas decimais</small
-              >
+                casas decimais
+              </small>
+            </div>
 
-              <!-- 1:43:33 -->
+            <div class="input-group">
+              <label class="sr-only" for="date"></label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                placeholder="01/01/2021"
+              />
+            </div>
+
+            <div class="input-group actions">
+              <a href="#" class="button cancel">Cancelar</a>
+              <button>Salvar</button>
             </div>
           </form>
         </div>
@@ -123,5 +136,17 @@
     <footer>
       <p>dev.finance$</p>
     </footer>
+
+    <script>
+      Modal = {
+        open(){
+          alert("salve")
+        },
+// 2:13
+        close(){
+
+        }
+      }
+    </script>
   </body>
 </html>
