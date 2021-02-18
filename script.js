@@ -4,24 +4,21 @@ const Modal = {
   },
 };
 
+const Storage = {
+  get() {
+    return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
+  },
+
+  set(transactions) {
+    localStorage.setItem(
+      "dev.finances:transactions",
+      JSON.stringify(transactions)
+    );
+  },
+};
+
 const Transaction = {
-  all: [
-    {
-      description: "Luz",
-      amount: -60000,
-      date: "23/01/2021",
-    },
-    {
-      description: "Website",
-      amount: 500000,
-      date: "23/01/2021",
-    },
-    {
-      description: "Internet",
-      amount: -20000,
-      date: "23/01/2021",
-    },
-  ],
+  all: Storage.get(),
 
   add(transaction) {
     Transaction.all.push(transaction);
@@ -69,12 +66,13 @@ const DOM = {
 
   addTransaction(transaction, index) {
     const tr = document.createElement("tr");
-    tr.innerHTML = DOM.innerHTMLTransaction(transaction);
+    tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
+    tr.dataset.index = index;
 
     DOM.transactionsContainer.appendChild(tr);
   },
 
-  innerHTMLTransaction(transaction) {
+  innerHTMLTransaction(transaction, index) {
     const CSSclass = transaction.amount > 0 ? "income" : "expense";
     const amount = Utils.formatCurrency(transaction.amount);
 
@@ -83,7 +81,7 @@ const DOM = {
       <td class="${CSSclass}">${amount}</td>
       <td class="date">${transaction.date}</td>
       <td>
-        <img src="./assets/minus.svg" alt="Remover transação" />
+        <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação" />
       </td>
     `;
 
@@ -110,6 +108,18 @@ const DOM = {
 };
 
 const Utils = {
+  formatAmount(value) {
+    value = Number(value.replace(/\,\./g, "")) * 100;
+
+    return value;
+  },
+
+  formatDate(date) {
+    const splittedDate = date.split("-");
+
+    return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
+  },
+
   formatCurrency(value) {
     const signal = Number(value) < 0 ? "-" : "";
 
@@ -141,7 +151,18 @@ const Form = {
     };
   },
 
-  formatData() {},
+  formatValues() {
+    let { description, amount, date } = Form.getValues();
+
+    amount = Utils.formatAmount(amount);
+    date = Utils.formatDate(date);
+
+    return {
+      description,
+      amount,
+      date,
+    };
+  },
 
   validateFields() {
     const { description, amount, date } = Form.getValues();
@@ -155,20 +176,34 @@ const Form = {
     }
   },
 
+  clearFields() {
+    Form.description.value = "";
+    Form.amount.value = "";
+    Form.date.value = "";
+  },
+
   submit(event) {
     event.preventDefault();
-    Form.validateFields();
-    Form.formatData();
+
+    try {
+      Form.validateFields();
+      const transaction = Form.formatValues();
+      Transaction.add(transaction);
+      Form.clearFields();
+      Modal.toogle();
+    } catch (error) {
+      alert(error.message);
+    }
   },
 };
 
 const App = {
   init() {
-    Transaction.all.forEach((transaction) => {
-      DOM.addTransaction(transaction);
-    });
+    Transaction.all.forEach(DOM.addTransaction);
 
     DOM.updateBalance();
+
+    Storage.set(Transaction.all);
   },
 
   reload() {
@@ -178,5 +213,3 @@ const App = {
 };
 
 App.init();
-
-// 2:16
