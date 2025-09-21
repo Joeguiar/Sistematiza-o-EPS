@@ -73,6 +73,6 @@ Para adicionar uma saída de dinheiro (como aluguel ou compras):
    * Clique no botão para Adicionar ou Salvar. Sua despesa será adicionada e o saldo total será atualizado.
 
 3. Visualizando seu Saldo e o Histórico
+   
 O seu saldo total é exibido em destaque na parte superior da tela. Ele é o resultado da subtração das despesas das receitas.
-
 O histórico de transações é exibido em uma tabela abaixo dos campos de registro. Nela, você pode visualizar todas as suas receitas e despesas em ordem cronológica.
