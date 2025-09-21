@@ -44,6 +44,8 @@ Desenvolvimento de um backend para um armazenamento mais robusto de dados.
 
 Criação de Relatório
 
+Autor: Hélcia Karine Marques Lourenço Aguiar e Joedson Carneiro Aguiar
+
 
 <h3 align="center">
 Manual do Usuário: Sistema de Controle Financeiro
