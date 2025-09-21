@@ -45,8 +45,9 @@ Desenvolvimento de um backend para um armazenamento mais robusto de dados.
 Criação de Relatório
 
 
-
+<h3 align="center">
 Manual do Usuário: Sistema de Controle Financeiro
+ </h3>
 Bem-vindo ao Sistema de Controle Financeiro Pessoal! Este manual foi criado para ajudar você a começar a usar a aplicação de forma rápida e eficiente. Com ele, você poderá registrar suas receitas e despesas para ter uma visão clara da sua vida financeira.
 
 Funcionalidades Principais
@@ -68,7 +69,7 @@ No campo "Valor", insira o valor da sua receita.
 
 No campo "Descrição", digite uma breve descrição (ex: "Salário de setembro").
 
-Certifique-se de que a opção de Receita está selecionada (geralmente indicada por um sinal de "+").
+Certifique-se de que a opção de Receita está selecionada (geralmente indicada por um sinal de "+" na frente do valor digitado).
 
 Clique no botão para Adicionar ou Salvar. Sua receita será adicionada e o saldo total será atualizado.
 
@@ -81,7 +82,7 @@ No campo "Valor", insira o valor da sua despesa.
 
 No campo "Descrição", digite uma breve descrição (ex: "Conta de luz").
 
-Certifique-se de que a opção de Despesa está selecionada (geralmente indicada por um sinal de "-").
+Certifique-se de que a opção de Despesa está selecionada (geralmente indicada por um sinal de "-" na frente do valor digitado do valor).
 
 Clique no botão para Adicionar ou Salvar. Sua despesa será adicionada e o saldo total será atualizado.
 
